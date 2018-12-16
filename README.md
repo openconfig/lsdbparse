@@ -1,5 +1,11 @@
 # lsdbparse
 
+[![Build
+Status](https://travis-ci.org/openconfig/lsdbparse.svg?branch=master)](https://travis-ci.org/openconfig/lsdbparse)
+[![Coverage
+Status](https://coveralls.io/repos/github/openconfig/lsdbparse/badge.svg?branch=master)](https://coveralls.io/github/openconfig/lsdbparse?branch=master)
+
+
 This library contains a Go implementation which can parse an IS-IS LSP and
 output it as gNMI Notifications containing OpenConfig encoded data.
 
