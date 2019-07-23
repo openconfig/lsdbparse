@@ -18,6 +18,7 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"math"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -867,15 +868,15 @@ func TestISISBytesToLSP(t *testing.T) {
 	}
 }
 
-func TestRenderLSP(t *testing.T) {
-	tests := []struct {
-		name              string
-		inLSP             *oc.NetworkInstance_Protocol_Isis_Level_Lsp
-		inArgs            ISISRenderArgs
-		wantNotifications []*gnmipb.Notification
-		wantErrSubstring  string
-	}{{
-		name: "simple example",
+type renderLSPTest struct {
+	inLSP             *oc.NetworkInstance_Protocol_Isis_Level_Lsp
+	inArgs            ISISRenderArgs
+	wantNotifications []*gnmipb.Notification
+	wantErrSubstring  string
+}
+
+var renderLSPTests = map[string]*renderLSPTest{
+	"simple example": {
 		inLSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
 			Checksum:       ygot.Uint16(48899),
 			LspId:          ygot.String("0000.4000.ce39.02-00"),
@@ -944,8 +945,8 @@ func TestRenderLSP(t *testing.T) {
 			}},
 			Atomic: true,
 		}},
-	}, {
-		name: "larger example",
+	},
+	"larger example": {
 		inLSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
 			Checksum:       ygot.Uint16(32515),
 			LspId:          ygot.String("0000.4000.ce39.00-00"),
@@ -1307,8 +1308,8 @@ func TestRenderLSP(t *testing.T) {
 			}},
 			Atomic: true,
 		}},
-	}, {
-		name: "simple - pathelem path",
+	},
+	"simple - pathelem path": {
 		inLSP: func() *oc.NetworkInstance_Protocol_Isis_Level_Lsp {
 			l := &oc.NetworkInstance_Protocol_Isis_Level_Lsp{}
 			l.LspId = ygot.String("0000.4000.ce39.00-00")
@@ -1346,24 +1347,48 @@ func TestRenderLSP(t *testing.T) {
 			}},
 			Atomic: true,
 		}},
-	}, {
-		name:             "nil LSP ID",
+	},
+	"nil LSP ID": {
 		inLSP:            &oc.NetworkInstance_Protocol_Isis_Level_Lsp{},
 		wantErrSubstring: "nil LSP ID",
-	}, {
-		name:             "nil LSP",
+	},
+	"nil LSP": {
 		wantErrSubstring: "nil LSP",
-	}}
+	},
+}
 
-	for _, tt := range tests {
+func TestRenderLSP(t *testing.T) {
+	for name, tt := range renderLSPTests {
 		got, err := RenderNotifications(tt.inLSP, tt.inArgs)
 		if diff := errdiff.Substring(err, tt.wantErrSubstring); diff != "" {
-			t.Errorf("%s: RenderNotifications(%v, %v): got unexpected %s", tt.name, tt.inLSP, tt.inArgs, diff)
+			t.Errorf("%s: RenderNotifications(%v, %v): got unexpected %s", name, tt.inLSP, tt.inArgs, diff)
 		}
 
 		if !testutil.NotificationSetEqual(got, tt.wantNotifications) {
 			diff := pretty.Compare(got, tt.wantNotifications)
-			t.Errorf("%s: RenderNotifications(%v, %v): got incorrect return protos, diff(-got,+want):\n%s", tt.name, tt.inLSP, tt.inArgs, diff)
+			t.Errorf("%s: RenderNotifications(%v, %v): got incorrect return protos, diff(-got,+want):\n%s", name, tt.inLSP, tt.inArgs, diff)
+		}
+	}
+}
+
+func benchmarkRenderLSP(b *testing.B, name string, usePathElem bool) {
+	tt := *renderLSPTests[name]
+	for i := 0; i != b.N; i++ {
+		tt.inArgs.UsePathElem = usePathElem
+		_, err := RenderNotifications(tt.inLSP, tt.inArgs)
+		if diff := errdiff.Substring(err, tt.wantErrSubstring); diff != "" {
+			b.Errorf("%s: RenderNotifications(%v, %v): got unexpected %s", name, tt.inLSP, tt.inArgs, diff)
+		}
+	}
+}
+
+func BenchmarkRenderLSP(b *testing.B) {
+	benchmarkTests := []string{"simple example", "larger example", "simple - pathelem path"}
+
+	for _, usePathElem := range []bool{false, true} {
+		for _, name := range benchmarkTests {
+			b.Run(name+"/usePathElem="+strconv.FormatBool(usePathElem),
+				func(b *testing.B) { benchmarkRenderLSP(b, name, usePathElem) })
 		}
 	}
 }
