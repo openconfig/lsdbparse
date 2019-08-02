@@ -40,7 +40,7 @@ type rawTLV struct {
 // unparsed copies of the LSP that is being processed.
 type isisLSP struct {
 	// LSP is the parsed LSP represented as per the OpenConfig model.
-	LSP *oc.NetworkInstance_Protocol_Isis_Level_Lsp
+	LSP *oc.Lsp
 	// rawTLVs is the set of the TLVs that are included within the
 	// LSP as raw bytes.
 	rawTLVs []*rawTLV
@@ -50,8 +50,8 @@ type isisLSP struct {
 // struct to be used to store a parsed LSP.
 func newISISLSP() *isisLSP {
 	return &isisLSP{
-		LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-			Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{},
+		LSP: &oc.Lsp{
+			Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{},
 		},
 		rawTLVs: []*rawTLV{},
 	}
@@ -68,7 +68,7 @@ func newISISLSP() *isisLSP {
 // populated indicating that the LSP's contents were not completely succesfully parsed.
 // This function is specifically for Cisco IOS XR devices, since it handles the case
 // where a number of fields of the LSP are not included within the byte slice.
-func ISISBytesToLSP(lspBytes []byte, offset int) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp, bool, error) {
+func ISISBytesToLSP(lspBytes []byte, offset int) (*oc.Lsp, bool, error) {
 	lspBytes = lspBytes[offset:]
 
 	if len(lspBytes) < 16 {
@@ -134,7 +134,7 @@ type ISISRenderArgs struct {
 // RenderNotifications takes an input IS-IS LSP and outputs the gNMI Notifications that
 // represent the contents of the supplied LSP. The ISISRenderArgs struct provided gives
 // the context for the generation. Returns a set of gNMI notifications, or an error.
-func RenderNotifications(lsp *oc.NetworkInstance_Protocol_Isis_Level_Lsp, args ISISRenderArgs) ([]*gnmipb.Notification, error) {
+func RenderNotifications(lsp *oc.Lsp, args ISISRenderArgs) ([]*gnmipb.Notification, error) {
 	if lsp == nil {
 		return nil, fmt.Errorf("cannot handle nil LSP")
 	}
@@ -145,7 +145,10 @@ func RenderNotifications(lsp *oc.NetworkInstance_Protocol_Isis_Level_Lsp, args I
 
 	rArgs := ygot.GNMINotificationsConfig{
 		UsePathElem: args.UsePathElem,
-		StringSlicePrefix: []string{
+	}
+
+	prefix := &gnmipb.Path{
+		Element: []string{
 			"network-instances", "network-instance", args.NetworkInstance,
 			"protocols", "protocol", "ISIS", args.ProtocolInstance,
 			"isis", "levels", "level", fmt.Sprintf("%d", args.Level),
@@ -158,7 +161,7 @@ func RenderNotifications(lsp *oc.NetworkInstance_Protocol_Isis_Level_Lsp, args I
 		if err != nil {
 			return nil, fmt.Errorf("cannot create prefix path, %v", err)
 		}
-		rArgs.PathElemPrefix = p.Elem
+		prefix = p
 		rArgs.StringSlicePrefix = nil
 	}
 
@@ -168,6 +171,7 @@ func RenderNotifications(lsp *oc.NetworkInstance_Protocol_Isis_Level_Lsp, args I
 	}
 	// IS-IS LSPs are atomically updated.
 	for _, n := range notifications {
+		n.Prefix = prefix
 		n.Atomic = true
 	}
 	return notifications, nil

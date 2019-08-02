@@ -297,13 +297,13 @@ func (i *isisLSP) processCapabilityTLV(r *rawTLV) error {
 // processSRAlgorithmCapabilitySubTLV parses the Segment Routing algorithm
 // sub-TLV, sub-TLV type 19 of TLV 242. Defined in draft-ietf-isis-segment-routing-extensions.
 // The sub-TLV is appended to the Capability TLV provided.
-func processSRAlgorithmCapabilitySubTLV(c *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability, r *rawTLV) error {
+func processSRAlgorithmCapabilitySubTLV(c *oc.Lsp_Tlv_Capability, r *rawTLV) error {
 	stlv, err := getCapabilitySubTLV(c, oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_ROUTER_CAPABILITY_SR_ALGORITHM)
 	if err != nil {
 		return err
 	}
 
-	stlv.SegmentRoutingAlgorithms = &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingAlgorithms{}
+	stlv.SegmentRoutingAlgorithms = &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingAlgorithms{}
 	var pErr errlist.List
 	// The encoding of the algorithm TLV is 1-byte values per algorithm.
 	for _, i := range r.Value {
@@ -322,13 +322,13 @@ func processSRAlgorithmCapabilitySubTLV(c *oc.NetworkInstance_Protocol_Isis_Leve
 
 // processSRCapabilitySubTLV processes the Segment Routing capability
 // sub-TLV, sub-TLV type 2, of TLV 242. Defined in draft-ietf-isis-segment-routing-extensions.
-func processSRCapabilitySubTLV(c *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability, r *rawTLV) error {
+func processSRCapabilitySubTLV(c *oc.Lsp_Tlv_Capability, r *rawTLV) error {
 	stlv, err := getCapabilitySubTLV(c, oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_ROUTER_CAPABILITY_SR_CAPABILITY)
 	if err != nil {
 		return err
 	}
 
-	srcap := &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability{}
+	srcap := &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability{}
 	// The encoding of the SR capabilities sub-TLV is as follows.
 	// 1-byte of flags:
 	//	bit 0: MPLS-IPv4 capability bit
@@ -400,7 +400,7 @@ func processSRCapabilitySubTLV(c *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv
 		// Increment the entry number for subsequent SRGB descriptors.
 		descrNo++
 
-		descr.Label = &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{lbl}
+		descr.Label = &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{lbl}
 		descr.Range = ygot.Uint32(srgbRange)
 	}
 	stlv.SegmentRoutingCapability = srcap
@@ -484,7 +484,7 @@ func (i *isisLSP) processIPv6ReachabilityTLV(r *rawTLV) error {
 			return err
 		}
 
-		pfxTLV := &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+		pfxTLV := &oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 			Prefix: ygot.String(pfx),
 			UpDown: ygot.Bool(upDown),
 			SBit:   ygot.Bool(subTLVPresent),
@@ -618,7 +618,7 @@ func parsePrefixSIDSubTLV(r *rawTLV) (*prefixSIDSubTLV, error) {
 
 // addIPv6ReachabilityPrefixSID adds the contents of a prefixSIDSubTLV to the supplied
 // IPv6 Reachability prefix TLV. Return an error if adding the contents is not possible.
-func addIPv6ReachabilityPrefixSID(c *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix, p *prefixSIDSubTLV) error {
+func addIPv6ReachabilityPrefixSID(c *oc.Lsp_Tlv_Ipv6Reachability_Prefix, p *prefixSIDSubTLV) error {
 	subtlv, err := c.NewSubtlv(oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID)
 	if err != nil {
 		return err
@@ -707,7 +707,7 @@ func (i *isisLSP) processExtendedISReachabilityTLV(r *rawTLV) error {
 		}
 
 		nid := canonicalHexString(r.Value[x : x+7])
-		var n *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor
+		var n *oc.Lsp_Tlv_ExtendedIsReachability_Neighbor
 
 		if t, ok := tlv.ExtendedIsReachability.Neighbor[nid]; ok {
 			n = t
@@ -742,7 +742,7 @@ func (i *isisLSP) processExtendedISReachabilityTLV(r *rawTLV) error {
 // parseExtendedISReachSubTLVs parses the subTLVs of the extended IS reachability
 // TLV, appending them to the instance provided. Returns an error if parsing is
 // unsuccesful.
-func parseExtendedISReachSubTLVs(n *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance, subTLVs []*rawTLV) error {
+func parseExtendedISReachSubTLVs(n *oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance, subTLVs []*rawTLV) error {
 	var pErr errlist.List
 	for _, s := range subTLVs {
 		switch s.Type {
@@ -765,7 +765,7 @@ func parseExtendedISReachSubTLVs(n *oc.NetworkInstance_Protocol_Isis_Level_Lsp_T
 				pErr.Add(err)
 				continue
 			}
-			n.GetOrCreateSubtlv(oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_LINK_ID).LinkId = &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LinkId{
+			n.GetOrCreateSubtlv(oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_LINK_ID).LinkId = &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LinkId{
 				Local:  ygot.Uint32(local),
 				Remote: ygot.Uint32(remote),
 			}
@@ -839,7 +839,7 @@ func parseExtendedISReachSubTLVs(n *oc.NetworkInstance_Protocol_Isis_Level_Lsp_T
 			}
 
 			for pri, bw := range ubw {
-				if err := st.AppendSetupPriority(&oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_SetupPriority{
+				if err := st.AppendSetupPriority(&oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_SetupPriority{
 					Priority:  ygot.Uint8(pri),
 					Bandwidth: bw,
 				}); err != nil {
@@ -999,7 +999,7 @@ func parseLocalRemoteLinkIDSubTLV(r *rawTLV) (uint32, uint32, error) {
 // parseAdjSIDSubTLV parses sub-TLV 31 of the IS adjacency TLVs 22, 23,
 // 141, 222, and 223. It returns the populated OpenConfig struct for the Adj-SID
 // subTLV.
-func parseAdjSIDSubTLV(r *rawTLV) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid, error) {
+func parseAdjSIDSubTLV(r *rawTLV) (*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid, error) {
 	if len(r.Value) < 5 {
 		// Length must be a minimum of:
 		//  - 1 byte flagByte
@@ -1020,7 +1020,7 @@ func parseAdjSIDSubTLV(r *rawTLV) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_T
 		return nil, err
 	}
 
-	return &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+	return &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 		Value:  ygot.Uint32(value),
 		Flags:  flags,
 		Weight: ygot.Uint8(uint8(weight)),
@@ -1030,7 +1030,7 @@ func parseAdjSIDSubTLV(r *rawTLV) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_T
 // parseLANAdjSIDSubTLV parses the LAN Adjacency Segment Identifier (TLV ID 32) subTLV of the
 // Extended IS Reachability TLVs (22, 23, 222, 223). It returns the populated OpenConfig
 // struct for the LAN Adjacency SID sub-TLV.
-func parseLANAdjSIDSubTLV(r *rawTLV) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid, error) {
+func parseLANAdjSIDSubTLV(r *rawTLV) (*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid, error) {
 	if len(r.Value) < 8 {
 		// Length must be a minimum of
 		//  - 1 byte flags
@@ -1053,7 +1053,7 @@ func parseLANAdjSIDSubTLV(r *rawTLV) (*oc.NetworkInstance_Protocol_Isis_Level_Ls
 		return nil, err
 	}
 
-	return &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
+	return &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
 		Value:      ygot.Uint32(value),
 		Flags:      flags,
 		Weight:     ygot.Uint8(uint8(weight)),
@@ -1236,7 +1236,7 @@ func (i *isisLSP) processExtendedIPReachTLV(r *rawTLV) error {
 			return err
 		}
 
-		pfxTLV := &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
+		pfxTLV := &oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
 			Prefix: ygot.String(v4Pfx),
 			Metric: ygot.Uint32(metric),
 			SBit:   ygot.Bool(subTLVPresent),
@@ -1280,7 +1280,7 @@ func (i *isisLSP) processExtendedIPReachTLV(r *rawTLV) error {
 		}
 
 		if tlv.ExtendedIpv4Reachability.Prefix == nil {
-			tlv.ExtendedIpv4Reachability.Prefix = make(map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix)
+			tlv.ExtendedIpv4Reachability.Prefix = make(map[string]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix)
 		}
 		tlv.ExtendedIpv4Reachability.Prefix[v4Pfx] = pfxTLV
 	}
@@ -1291,7 +1291,7 @@ func (i *isisLSP) processExtendedIPReachTLV(r *rawTLV) error {
 // addExtendedIPReachabilityPrefixSID adds the content of a prefixSIDSubTLV to the supplied
 // Extended IPv4 Reachability prefix TLV. Returns an error if adding the contents is not
 // possible.
-func addExtendedIPReachabilityPrefixSID(c *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix, p *prefixSIDSubTLV) error {
+func addExtendedIPReachabilityPrefixSID(c *oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix, p *prefixSIDSubTLV) error {
 	subtlv, err := c.NewSubtlv(oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID)
 	if err != nil {
 		return err
