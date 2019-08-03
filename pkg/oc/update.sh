@@ -30,12 +30,11 @@ git clone https://github.com/openconfig/public.git
 git clone https://github.com/mbrukman/autogen.git
 mkdir deps && cp ../../third_party/*.yang deps
 go run $GOPATH/src/github.com/openconfig/ygot/generator/generator.go -path=public,deps -output_file=oc.go \
-  -package_name=oc -generate_fakeroot -fakeroot_name=device -compress_paths=true \
-  -exclude_modules=ietf-interfaces,openconfig-acl,openconfig-bgp,openconfig-interfaces,openconfig-local-routing \
+  -package_name=oc -generate_fakeroot -fakeroot_name=lsdb -compress_paths=true \
+  -exclude_modules=ietf-interfaces,openconfig-acl,openconfig-bgp,openconfig-interfaces,openconfig-local-routing,openconfig-routing-policy \
   -generate_getters \
   -generate_append \
-  yang/parse-isis-deviations.yang \
-  public/release/models/network-instance/openconfig-network-instance.yang
+  yang/lsdbparse-isis.yang
 gofmt -w -s oc.go
 autogen/autogen --no-code --no-tlc -c "Google LLC" -l apache -i oc.go
 rm -rf public autogen deps

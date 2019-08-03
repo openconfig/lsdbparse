@@ -204,34 +204,34 @@ func TestGetTLV(t *testing.T) {
 		inTLVName          oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE
 		inTLVContainerName string
 		inLSP              *isisLSP
-		wantTLV            *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv
+		wantTLV            *oc.Lsp_Tlv
 	}{{
 		name:               "new tlv",
 		inTLVName:          oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
 		inTLVContainerName: "Hostname",
-		wantTLV: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+		wantTLV: &oc.Lsp_Tlv{
 			Type:     oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
-			Hostname: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Hostname{},
+			Hostname: &oc.Lsp_Tlv_Hostname{},
 		},
 	}, {
 		name:               "existing TLV",
 		inTLVName:          oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
 		inTLVContainerName: "Hostname",
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
-						Hostname: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Hostname{
+						Hostname: &oc.Lsp_Tlv_Hostname{
 							Hostname: []string{"fish"},
 						},
 					},
 				},
 			},
 		},
-		wantTLV: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+		wantTLV: &oc.Lsp_Tlv{
 			Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
-			Hostname: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Hostname{
+			Hostname: &oc.Lsp_Tlv_Hostname{
 				Hostname: []string{"fish"},
 			},
 		},

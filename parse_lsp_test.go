@@ -98,11 +98,11 @@ func TestProcessDynamicNameTLV(t *testing.T) {
 			Value: []byte("pf01.cbf99"),
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
-						Hostname: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Hostname{
+						Hostname: &oc.Lsp_Tlv_Hostname{
 							Hostname: []string{"pf01.cbf99"},
 						},
 					},
@@ -115,11 +115,11 @@ func TestProcessDynamicNameTLV(t *testing.T) {
 			Value: []byte("bd07.sql88.net.google.com"),
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
-						Hostname: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Hostname{
+						Hostname: &oc.Lsp_Tlv_Hostname{
 							Hostname: []string{"pf01.cbf99"},
 						},
 					},
@@ -127,11 +127,11 @@ func TestProcessDynamicNameTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_DYNAMIC_NAME,
-						Hostname: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Hostname{
+						Hostname: &oc.Lsp_Tlv_Hostname{
 							Hostname: []string{"pf01.cbf99", "bd07.sql88.net.google.com"},
 						},
 					},
@@ -173,11 +173,11 @@ func TestProcessAreaAddressTLV(t *testing.T) {
 			Value: []byte{0x1, 'a'},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES,
-						AreaAddress: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_AreaAddress{
+						AreaAddress: &oc.Lsp_Tlv_AreaAddress{
 							Address: []string{"61."},
 						},
 					},
@@ -190,11 +190,11 @@ func TestProcessAreaAddressTLV(t *testing.T) {
 			Value: []byte{0x2, 0x36, 0x24},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES,
-						AreaAddress: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_AreaAddress{
+						AreaAddress: &oc.Lsp_Tlv_AreaAddress{
 							Address: []string{"ffff"},
 						},
 					},
@@ -202,11 +202,11 @@ func TestProcessAreaAddressTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES,
-						AreaAddress: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_AreaAddress{
+						AreaAddress: &oc.Lsp_Tlv_AreaAddress{
 							Address: []string{"ffff", "36.24"},
 						},
 					},
@@ -231,11 +231,11 @@ func TestProcessAreaAddressTLV(t *testing.T) {
 			Value: []byte{},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES: {
 						Type:        oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES,
-						AreaAddress: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_AreaAddress{},
+						AreaAddress: &oc.Lsp_Tlv_AreaAddress{},
 					},
 				},
 			},
@@ -246,11 +246,11 @@ func TestProcessAreaAddressTLV(t *testing.T) {
 			Value: []byte{0x1, 0x1, 0x1, 0x2},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES: {
 						Type:        oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_AREA_ADDRESSES,
-						AreaAddress: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_AreaAddress{[]string{"01.", "02."}},
+						AreaAddress: &oc.Lsp_Tlv_AreaAddress{[]string{"01.", "02."}},
 					},
 				},
 			},
@@ -290,11 +290,11 @@ func TestProcessProtocolsSupportedTLV(t *testing.T) {
 			Value: []byte{0xCC},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_NLPID: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_NLPID,
-						Nlpid: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Nlpid{
+						Nlpid: &oc.Lsp_Tlv_Nlpid{
 							Nlpid: []oc.E_OpenconfigIsis_Nlpid_Nlpid{oc.OpenconfigIsis_Nlpid_Nlpid_IPV4},
 						},
 					},
@@ -307,11 +307,11 @@ func TestProcessProtocolsSupportedTLV(t *testing.T) {
 			Value: []byte{0x8E},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_NLPID: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_NLPID,
-						Nlpid: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Nlpid{
+						Nlpid: &oc.Lsp_Tlv_Nlpid{
 							Nlpid: []oc.E_OpenconfigIsis_Nlpid_Nlpid{oc.OpenconfigIsis_Nlpid_Nlpid_IPV4},
 						},
 					},
@@ -319,11 +319,11 @@ func TestProcessProtocolsSupportedTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_NLPID: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_NLPID,
-						Nlpid: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Nlpid{
+						Nlpid: &oc.Lsp_Tlv_Nlpid{
 							Nlpid: []oc.E_OpenconfigIsis_Nlpid_Nlpid{oc.OpenconfigIsis_Nlpid_Nlpid_IPV4, oc.OpenconfigIsis_Nlpid_Nlpid_IPV6},
 						},
 					},
@@ -371,11 +371,11 @@ func TestProcessIPInterfaceAddressTLV(t *testing.T) {
 			Value: []byte{192, 168, 1, 2},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_INTERFACE_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_INTERFACE_ADDRESSES,
-						Ipv4InterfaceAddresses: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv4InterfaceAddresses{
+						Ipv4InterfaceAddresses: &oc.Lsp_Tlv_Ipv4InterfaceAddresses{
 							Address: []string{"192.168.1.2"},
 						},
 					},
@@ -388,11 +388,11 @@ func TestProcessIPInterfaceAddressTLV(t *testing.T) {
 			Value: []byte{192, 168, 1, 2, 192, 0, 2, 1},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_INTERFACE_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_INTERFACE_ADDRESSES,
-						Ipv4InterfaceAddresses: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv4InterfaceAddresses{
+						Ipv4InterfaceAddresses: &oc.Lsp_Tlv_Ipv4InterfaceAddresses{
 							Address: []string{"10.0.0.1"},
 						},
 					},
@@ -400,11 +400,11 @@ func TestProcessIPInterfaceAddressTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_INTERFACE_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_INTERFACE_ADDRESSES,
-						Ipv4InterfaceAddresses: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv4InterfaceAddresses{
+						Ipv4InterfaceAddresses: &oc.Lsp_Tlv_Ipv4InterfaceAddresses{
 							Address: []string{"10.0.0.1", "192.168.1.2", "192.0.2.1"},
 						},
 					},
@@ -452,11 +452,11 @@ func TestProcessIPv6InterfaceAddressTLV(t *testing.T) {
 			Value: []byte{0x20, 0x01, 0x4c, 0x20, 0x05, 0x06, 0x07, 0x08, 0x09, 0xA, 0xB, 0xC, 0xD, 0xE, 0xF, 0x00},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_INTERFACE_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_INTERFACE_ADDRESSES,
-						Ipv6InterfaceAddresses: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6InterfaceAddresses{
+						Ipv6InterfaceAddresses: &oc.Lsp_Tlv_Ipv6InterfaceAddresses{
 							Address: []string{"2001:4c20:506:708:90a:b0c:d0e:f00"},
 						},
 					},
@@ -469,11 +469,11 @@ func TestProcessIPv6InterfaceAddressTLV(t *testing.T) {
 			Value: []byte{0x20, 0x01, 0x0d, 0xb8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x01, 0x0d, 0xb8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xde, 0xad, 0xca, 0xfe},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_INTERFACE_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_INTERFACE_ADDRESSES,
-						Ipv6InterfaceAddresses: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6InterfaceAddresses{
+						Ipv6InterfaceAddresses: &oc.Lsp_Tlv_Ipv6InterfaceAddresses{
 							Address: []string{"2001:db8::dead:beef"},
 						},
 					},
@@ -481,11 +481,11 @@ func TestProcessIPv6InterfaceAddressTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_INTERFACE_ADDRESSES: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_INTERFACE_ADDRESSES,
-						Ipv6InterfaceAddresses: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6InterfaceAddresses{
+						Ipv6InterfaceAddresses: &oc.Lsp_Tlv_Ipv6InterfaceAddresses{
 							Address: []string{"2001:db8::dead:beef", "2001:db8::", "2001:db8::dead:cafe"},
 						},
 					},
@@ -533,11 +533,11 @@ func TestProcessCapabilityTLV(t *testing.T) {
 			Value: []byte{192, 0, 2, 1, 0x3},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_ROUTER_CAPABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_ROUTER_CAPABILITY,
-						Capability: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability{
+						Capability: map[uint32]*oc.Lsp_Tlv_Capability{
 							0: {
 								InstanceNumber: ygot.Uint32(0),
 								RouterId:       ygot.String("192.0.2.1"),
@@ -557,8 +557,8 @@ func TestProcessCapabilityTLV(t *testing.T) {
 			Value: []byte{10, 0, 0, 1, 0x01},
 		},
 		wantLSP: &isisLSP{
-			LSP: func() *oc.NetworkInstance_Protocol_Isis_Level_Lsp {
-				i := &oc.NetworkInstance_Protocol_Isis_Level_Lsp{}
+			LSP: func() *oc.Lsp {
+				i := &oc.Lsp{}
 				c := i.GetOrCreateTlv(oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_ROUTER_CAPABILITY).GetOrCreateCapability(0)
 				c.InstanceNumber = ygot.Uint32(0)
 				c.RouterId = ygot.String("10.0.0.1")
@@ -603,18 +603,18 @@ func TestProcessCapabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_ROUTER_CAPABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_ROUTER_CAPABILITY,
-						Capability: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability{
+						Capability: map[uint32]*oc.Lsp_Tlv_Capability{
 							0: {
 								InstanceNumber: ygot.Uint32(0),
 								RouterId:       ygot.String("192.0.2.1"),
-								Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv{
+								Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_Capability_Subtlv{
 									oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_ROUTER_CAPABILITY_SR_ALGORITHM: {
 										Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_ROUTER_CAPABILITY_SR_ALGORITHM,
-										SegmentRoutingAlgorithms: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingAlgorithms{
+										SegmentRoutingAlgorithms: &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingAlgorithms{
 											Algorithm: []oc.E_OpenconfigIsis_SegmentRoutingAlgorithms_Algorithm{
 												oc.OpenconfigIsis_SegmentRoutingAlgorithms_Algorithm_SPF,
 												oc.OpenconfigIsis_SegmentRoutingAlgorithms_Algorithm_STRICT_SPF,
@@ -666,26 +666,26 @@ func TestProcessCapabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_ROUTER_CAPABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_ROUTER_CAPABILITY,
-						Capability: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability{
+						Capability: map[uint32]*oc.Lsp_Tlv_Capability{
 							0: {
 								InstanceNumber: ygot.Uint32(0),
 								RouterId:       ygot.String("84.18.192.84"),
-								Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv{
+								Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_Capability_Subtlv{
 									oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_ROUTER_CAPABILITY_SR_CAPABILITY: {
 										Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_ROUTER_CAPABILITY_SR_CAPABILITY,
-										SegmentRoutingCapability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability{
+										SegmentRoutingCapability: &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability{
 											Flags: []oc.E_OpenconfigIsis_SegmentRoutingCapability_Flags{
 												oc.OpenconfigIsis_SegmentRoutingCapability_Flags_IPV4_MPLS,
 												oc.OpenconfigIsis_SegmentRoutingCapability_Flags_IPV6_MPLS,
 											},
-											SrgbDescriptor: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor{
-												0: {Range: ygot.Uint32(42), Label: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{42}},
-												1: {Range: ygot.Uint32(128), Label: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{128}},
-												2: {Range: ygot.Uint32(255), Label: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{65535}},
+											SrgbDescriptor: map[uint32]*oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor{
+												0: {Range: ygot.Uint32(42), Label: &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{42}},
+												1: {Range: ygot.Uint32(128), Label: &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{128}},
+												2: {Range: ygot.Uint32(255), Label: &oc.Lsp_Tlv_Capability_Subtlv_SegmentRoutingCapability_SrgbDescriptor_Label_Union_Uint32{65535}},
 											},
 										},
 									},
@@ -783,12 +783,12 @@ func TestProcessIPv6ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY,
-						Ipv6Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+						Ipv6Reachability: &oc.Lsp_Tlv_Ipv6Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 								"2000::/3": {
 									Prefix: ygot.String("2000::/3"),
 									UpDown: ygot.Bool(true),
@@ -818,12 +818,12 @@ func TestProcessIPv6ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY,
-						Ipv6Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+						Ipv6Reachability: &oc.Lsp_Tlv_Ipv6Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 								"2000::/3": {
 									Prefix: ygot.String("2000::/3"),
 									UpDown: ygot.Bool(false),
@@ -862,12 +862,12 @@ func TestProcessIPv6ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY,
-						Ipv6Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+						Ipv6Reachability: &oc.Lsp_Tlv_Ipv6Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 								"2000::/3": {
 									Prefix: ygot.String("2000::/3"),
 									UpDown: ygot.Bool(true),
@@ -898,12 +898,12 @@ func TestProcessIPv6ReachabilityTLV(t *testing.T) {
 			},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY,
-						Ipv6Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+						Ipv6Reachability: &oc.Lsp_Tlv_Ipv6Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 								"2000::/3": {
 									Prefix: ygot.String("2000::/3"),
 									UpDown: ygot.Bool(true),
@@ -918,12 +918,12 @@ func TestProcessIPv6ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY,
-						Ipv6Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+						Ipv6Reachability: &oc.Lsp_Tlv_Ipv6Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 								"2000::/3": {
 									Prefix: ygot.String("2000::/3"),
 									UpDown: ygot.Bool(true),
@@ -987,22 +987,22 @@ func TestProcessIPv6ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY,
-						Ipv6Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+						Ipv6Reachability: &oc.Lsp_Tlv_Ipv6Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 								"2001:4c20::/32": {
 									Prefix: ygot.String("2001:4c20::/32"),
 									UpDown: ygot.Bool(true),
 									SBit:   ygot.Bool(true),
 									XBit:   ygot.Bool(true),
 									Metric: ygot.Uint32(42),
-									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv{
+									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv{
 										oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID: {
 											Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID,
-											PrefixSid: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv_PrefixSid{
+											PrefixSid: map[uint32]*oc.Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv_PrefixSid{
 												255: {
 													Value:     ygot.Uint32(255),
 													Algorithm: ygot.Uint8(0),
@@ -1041,22 +1041,22 @@ func TestProcessIPv6ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV6_REACHABILITY,
-						Ipv6Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix{
+						Ipv6Reachability: &oc.Lsp_Tlv_Ipv6Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_Ipv6Reachability_Prefix{
 								"2001:4c20:42::/48": {
 									Prefix: ygot.String("2001:4c20:42::/48"),
 									UpDown: ygot.Bool(true),
 									SBit:   ygot.Bool(true),
 									XBit:   ygot.Bool(true),
 									Metric: ygot.Uint32(42),
-									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv{
+									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv{
 										oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID: {
 											Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID,
-											PrefixSid: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv_PrefixSid{
+											PrefixSid: map[uint32]*oc.Lsp_Tlv_Ipv6Reachability_Prefix_Subtlv_PrefixSid{
 												uint32(0xFFFF): {
 													Value:     ygot.Uint32(uint32(0xFFFF)),
 													Algorithm: ygot.Uint8(0),
@@ -1144,11 +1144,11 @@ func TestIPv4TERouterIDTLV(t *testing.T) {
 			Value: []byte{192, 168, 1, 1},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_TE_ROUTER_ID: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_TE_ROUTER_ID,
-						Ipv4TeRouterId: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv4TeRouterId{
+						Ipv4TeRouterId: &oc.Lsp_Tlv_Ipv4TeRouterId{
 							RouterId: []string{"192.168.1.1"},
 						},
 					},
@@ -1173,11 +1173,11 @@ func TestIPv4TERouterIDTLV(t *testing.T) {
 			Value: []byte{84, 18, 192, 72},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_TE_ROUTER_ID: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_TE_ROUTER_ID,
-						Ipv4TeRouterId: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv4TeRouterId{
+						Ipv4TeRouterId: &oc.Lsp_Tlv_Ipv4TeRouterId{
 							RouterId: []string{"192.16.1.1"},
 						},
 					},
@@ -1185,11 +1185,11 @@ func TestIPv4TERouterIDTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_TE_ROUTER_ID: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_IPV4_TE_ROUTER_ID,
-						Ipv4TeRouterId: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Ipv4TeRouterId{
+						Ipv4TeRouterId: &oc.Lsp_Tlv_Ipv4TeRouterId{
 							RouterId: []string{"192.16.1.1", "84.18.192.72"},
 						},
 					},
@@ -1245,15 +1245,15 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(42),
@@ -1284,15 +1284,15 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(42),
@@ -1306,15 +1306,15 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(42),
@@ -1322,10 +1322,10 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 										1: {
 											Id:     ygot.Uint64(1),
 											Metric: ygot.Uint32(42),
-											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
+											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
 												oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_ADMIN_GROUP: {
 													Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_ADMIN_GROUP,
-													AdminGroup: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdminGroup{
+													AdminGroup: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdminGroup{
 														AdminGroup: []uint32{2763264},
 													},
 												},
@@ -1356,22 +1356,22 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(42),
-											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
+											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
 												oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_ADMIN_GROUP: {
 													Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_ADMIN_GROUP,
-													AdminGroup: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdminGroup{
+													AdminGroup: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdminGroup{
 														AdminGroup: []uint32{2763264},
 													},
 												},
@@ -1413,22 +1413,22 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(255),
-											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
+											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
 												oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_IPV4_INTERFACE_ADDRESS: {
 													Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_IPV4_INTERFACE_ADDRESS,
-													Ipv4InterfaceAddress: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_Ipv4InterfaceAddress{
+													Ipv4InterfaceAddress: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_Ipv4InterfaceAddress{
 														Address: []string{"192.168.1.1"},
 													},
 												},
@@ -1472,22 +1472,22 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(255),
-											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
+											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
 												oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_IPV4_NEIGHBOR_ADDRESS: {
 													Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_IPV4_NEIGHBOR_ADDRESS,
-													Ipv4NeighborAddress: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_Ipv4NeighborAddress{
+													Ipv4NeighborAddress: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_Ipv4NeighborAddress{
 														Address: []string{"192.0.2.1"},
 													},
 												},
@@ -1528,22 +1528,22 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(255),
-											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
+											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
 												oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_MAX_LINK_BANDWIDTH: {
 													Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_MAX_LINK_BANDWIDTH,
-													MaxLinkBandwidth: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_MaxLinkBandwidth{
+													MaxLinkBandwidth: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_MaxLinkBandwidth{
 														Bandwidth: float32ByteSlice(728.25),
 													},
 												},
@@ -1584,22 +1584,22 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(65535),
-											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
+											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
 												oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_MAX_RESERVABLE_BANDWIDTH: {
 													Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_MAX_RESERVABLE_BANDWIDTH,
-													MaxReservableLinkBandwidth: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_MaxReservableLinkBandwidth{
+													MaxReservableLinkBandwidth: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_MaxReservableLinkBandwidth{
 														Bandwidth: float32ByteSlice(728.25),
 													},
 												},
@@ -1640,22 +1640,22 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY,
-						ExtendedIsReachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability{
-							Neighbor: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor{
+						ExtendedIsReachability: &oc.Lsp_Tlv_ExtendedIsReachability{
+							Neighbor: map[string]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor{
 								"4900.0000.0000.01": {
 									SystemId: ygot.String("4900.0000.0000.01"),
-									Instance: map[uint64]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
+									Instance: map[uint64]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance{
 										0: {
 											Id:     ygot.Uint64(0),
 											Metric: ygot.Uint32(65535),
-											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
+											Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv{
 												oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_RESIDUAL_BANDWIDTH: {
 													Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_RESIDUAL_BANDWIDTH,
-													ResidualBandwidth: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_ResidualBandwidth{
+													ResidualBandwidth: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_ResidualBandwidth{
 														Bandwidth: float32ByteSlice(728.25),
 													},
 												},
@@ -1712,8 +1712,8 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			),
 		},
 		wantLSP: &isisLSP{
-			LSP: func() *oc.NetworkInstance_Protocol_Isis_Level_Lsp {
-				l := &oc.NetworkInstance_Protocol_Isis_Level_Lsp{}
+			LSP: func() *oc.Lsp {
+				l := &oc.Lsp{}
 				neigh := l.GetOrCreateTlv(oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY).GetOrCreateExtendedIsReachability().GetOrCreateNeighbor("4900.0000.0000.01")
 				n := neigh.GetOrCreateInstance(0)
 				n.Metric = ygot.Uint32(65535)
@@ -1761,8 +1761,8 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			),
 		},
 		wantLSP: &isisLSP{
-			LSP: func() *oc.NetworkInstance_Protocol_Isis_Level_Lsp {
-				l := &oc.NetworkInstance_Protocol_Isis_Level_Lsp{}
+			LSP: func() *oc.Lsp {
+				l := &oc.Lsp{}
 				neigh := l.GetOrCreateTlv(oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY).GetOrCreateExtendedIsReachability().GetOrCreateNeighbor("4900.0000.0000.01")
 				n := neigh.GetOrCreateInstance(0)
 				n.Metric = ygot.Uint32(65535)
@@ -1804,13 +1804,13 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			),
 		},
 		wantLSP: &isisLSP{
-			LSP: func() *oc.NetworkInstance_Protocol_Isis_Level_Lsp {
-				l := &oc.NetworkInstance_Protocol_Isis_Level_Lsp{}
+			LSP: func() *oc.Lsp {
+				l := &oc.Lsp{}
 				neigh := l.GetOrCreateTlv(oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY).GetOrCreateExtendedIsReachability().GetOrCreateNeighbor("4900.0000.0000.01")
 				n := neigh.GetOrCreateInstance(0)
 				n.Metric = ygot.Uint32(65535)
 				s := n.GetOrCreateSubtlv(oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_ADJ_SID)
-				if err := s.AppendAdjacencySid(&oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+				if err := s.AppendAdjacencySid(&oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 					Value:  ygot.Uint32(42),
 					Weight: ygot.Uint8(255),
 					Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
@@ -1842,13 +1842,13 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			),
 		},
 		wantLSP: &isisLSP{
-			LSP: func() *oc.NetworkInstance_Protocol_Isis_Level_Lsp {
-				l := &oc.NetworkInstance_Protocol_Isis_Level_Lsp{}
+			LSP: func() *oc.Lsp {
+				l := &oc.Lsp{}
 				n := l.GetOrCreateTlv(oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY).GetOrCreateExtendedIsReachability().GetOrCreateNeighbor("4900.0000.0000.01").GetOrCreateInstance(0)
 				n.Metric = ygot.Uint32(65535)
 				s := n.GetOrCreateSubtlv(oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_ADJ_SID)
 
-				sids := []*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{{
+				sids := []*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{{
 					Value:  ygot.Uint32(42),
 					Weight: ygot.Uint8(255),
 					Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
@@ -1900,13 +1900,13 @@ func TestProcessExtendedISReachabilityTLV(t *testing.T) {
 			),
 		},
 		wantLSP: &isisLSP{
-			LSP: func() *oc.NetworkInstance_Protocol_Isis_Level_Lsp {
-				l := &oc.NetworkInstance_Protocol_Isis_Level_Lsp{}
+			LSP: func() *oc.Lsp {
+				l := &oc.Lsp{}
 				n := l.GetOrCreateTlv(oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IS_REACHABILITY).GetOrCreateExtendedIsReachability().GetOrCreateNeighbor("4900.0000.0000.01").GetOrCreateInstance(0)
 				n.Metric = ygot.Uint32(65535)
 				s := n.GetOrCreateSubtlv(oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IS_REACHABILITY_ADJ_LAN_SID)
 
-				sids := []*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{{
+				sids := []*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{{
 					Value:      ygot.Uint32(1),
 					Weight:     ygot.Uint8(0),
 					NeighborId: ygot.String("4900.0000.0002"),
@@ -1975,12 +1975,12 @@ func TestProcessExtendedIPv4ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY,
-						ExtendedIpv4Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
+						ExtendedIpv4Reachability: &oc.Lsp_Tlv_ExtendedIpv4Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
 								"192.168.1.1/32": {
 									Prefix: ygot.String("192.168.1.1/32"),
 									Metric: ygot.Uint32(42),
@@ -2013,12 +2013,12 @@ func TestProcessExtendedIPv4ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY,
-						ExtendedIpv4Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
+						ExtendedIpv4Reachability: &oc.Lsp_Tlv_ExtendedIpv4Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
 								"192.168.1.1/32": {
 									Prefix: ygot.String("192.168.1.1/32"),
 									Metric: ygot.Uint32(42),
@@ -2073,12 +2073,12 @@ func TestProcessExtendedIPv4ReachabilityTLV(t *testing.T) {
 			},
 		},
 		inLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY,
-						ExtendedIpv4Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
+						ExtendedIpv4Reachability: &oc.Lsp_Tlv_ExtendedIpv4Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
 								"192.168.1.1/32": {
 									Prefix: ygot.String("192.168.1.1/32"),
 									Metric: ygot.Uint32(42),
@@ -2092,12 +2092,12 @@ func TestProcessExtendedIPv4ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY,
-						ExtendedIpv4Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
+						ExtendedIpv4Reachability: &oc.Lsp_Tlv_ExtendedIpv4Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
 								"192.168.1.1/32": {
 									Prefix: ygot.String("192.168.1.1/32"),
 									Metric: ygot.Uint32(42),
@@ -2162,21 +2162,21 @@ func TestProcessExtendedIPv4ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY,
-						ExtendedIpv4Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
+						ExtendedIpv4Reachability: &oc.Lsp_Tlv_ExtendedIpv4Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
 								"192.0.0.0/4": {
 									Prefix: ygot.String("192.0.0.0/4"),
 									Metric: ygot.Uint32(42),
 									SBit:   ygot.Bool(true),
 									UpDown: ygot.Bool(true),
-									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv{
+									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv{
 										oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID: {
 											Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID,
-											PrefixSid: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv_PrefixSid{
+											PrefixSid: map[uint32]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv_PrefixSid{
 												42: {
 													Algorithm: ygot.Uint8(1),
 													Flags: []oc.E_OpenconfigIsis_PrefixSid_Flags{
@@ -2219,21 +2219,21 @@ func TestProcessExtendedIPv4ReachabilityTLV(t *testing.T) {
 			},
 		},
 		wantLSP: &isisLSP{
-			LSP: &oc.NetworkInstance_Protocol_Isis_Level_Lsp{
-				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv{
+			LSP: &oc.Lsp{
+				Tlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE]*oc.Lsp_Tlv{
 					oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY: {
 						Type: oc.OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE_EXTENDED_IPV4_REACHABILITY,
-						ExtendedIpv4Reachability: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability{
-							Prefix: map[string]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
+						ExtendedIpv4Reachability: &oc.Lsp_Tlv_ExtendedIpv4Reachability{
+							Prefix: map[string]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix{
 								"192.0.0.0/4": {
 									Prefix: ygot.String("192.0.0.0/4"),
 									Metric: ygot.Uint32(42),
 									SBit:   ygot.Bool(true),
 									UpDown: ygot.Bool(true),
-									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv{
+									Subtlv: map[oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv{
 										oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID: {
 											Type: oc.OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE_IP_REACHABILITY_PREFIX_SID,
-											PrefixSid: map[uint32]*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv_PrefixSid{
+											PrefixSid: map[uint32]*oc.Lsp_Tlv_ExtendedIpv4Reachability_Prefix_Subtlv_PrefixSid{
 												707406378: {
 													Algorithm: ygot.Uint8(0),
 													Flags: []oc.E_OpenconfigIsis_PrefixSid_Flags{
@@ -2373,7 +2373,7 @@ func TestParseAdjSIDSubTLV(t *testing.T) {
 	tests := []struct {
 		name             string
 		in               *rawTLV
-		want             *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid
+		want             *oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid
 		wantErrSubstring string
 	}{{
 		name: "invalid length",
@@ -2393,7 +2393,7 @@ func TestParseAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
 				oc.OpenconfigIsis_AdjacencySid_Flags_ADDRESS_FAMILY,
 			},
@@ -2412,7 +2412,7 @@ func TestParseAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
 				oc.OpenconfigIsis_AdjacencySid_Flags_BACKUP,
 			},
@@ -2431,7 +2431,7 @@ func TestParseAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
 				oc.OpenconfigIsis_AdjacencySid_Flags_VALUE,
 				oc.OpenconfigIsis_AdjacencySid_Flags_LOCAL,
@@ -2452,7 +2452,7 @@ func TestParseAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
 				oc.OpenconfigIsis_AdjacencySid_Flags_SET,
 			},
@@ -2471,7 +2471,7 @@ func TestParseAdjSIDSubTLV(t *testing.T) {
 				0x10, 0x10, 0x10,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
 				oc.OpenconfigIsis_AdjacencySid_Flags_ADDRESS_FAMILY,
 				oc.OpenconfigIsis_AdjacencySid_Flags_BACKUP,
@@ -2506,7 +2506,7 @@ func TestParseAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x2A,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_AdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_AdjacencySid_Flags{
 				oc.OpenconfigIsis_AdjacencySid_Flags_SET,
 				// TODO(robjs): Add persistent
@@ -2570,7 +2570,7 @@ func TestParseLANAdjSIDSubTLV(t *testing.T) {
 	tests := []struct {
 		name             string
 		in               *rawTLV
-		want             *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid
+		want             *oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid
 		wantErrSubstring string
 	}{{
 		name: "invalid length",
@@ -2592,7 +2592,7 @@ func TestParseLANAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_LanAdjacencySid_Flags{
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_ADDRESS_FAMILY,
 			},
@@ -2614,7 +2614,7 @@ func TestParseLANAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_LanAdjacencySid_Flags{
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_BACKUP,
 			},
@@ -2636,7 +2636,7 @@ func TestParseLANAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_LanAdjacencySid_Flags{
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_VALUE,
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_LOCAL,
@@ -2660,7 +2660,7 @@ func TestParseLANAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x00,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_LanAdjacencySid_Flags{
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_SET,
 			},
@@ -2682,7 +2682,7 @@ func TestParseLANAdjSIDSubTLV(t *testing.T) {
 				0x10, 0x10, 0x10,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_LanAdjacencySid_Flags{
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_ADDRESS_FAMILY,
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_BACKUP,
@@ -2722,7 +2722,7 @@ func TestParseLANAdjSIDSubTLV(t *testing.T) {
 				0x00, 0x00, 0x00, 0x2A,
 			},
 		},
-		want: &oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
+		want: &oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv_LanAdjacencySid{
 			Flags: []oc.E_OpenconfigIsis_LanAdjacencySid_Flags{
 				oc.OpenconfigIsis_LanAdjacencySid_Flags_SET,
 				// TODO(robjs): Add persistent

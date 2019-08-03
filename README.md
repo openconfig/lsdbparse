@@ -15,10 +15,14 @@ Two public APIs are provided:
   PDU beginning at the LSP ID field, and returns a ygot GoStruct containing the
   parsed LSP as per the OpenConfig schema, a bool indicating whether the LSP was
   succesfully parsed, and an error.
-* `RenderNotifications(*oc.NetworkInstnace_Protocol_Isis_Level_Lsp,
-  ISISRenderArgs)`: takes an input GoStruct corresponding to an IS-IS LSP, and
-  returns a slice of gNMI notifications which correspond to the contents of the
-  LSP, which can be used in streaming telemetry implementations.
+
+* `RenderNotifications(*oc.Lsp, ISISRenderArgs)`: takes an input GoStruct
+  corresponding to an IS-IS LSP, and returns a slice of gNMI notifications which
+  correspond to the contents of the LSP, which can be used in streaming telemetry
+  implementations.
+
+The generated code for the OpenConfig library uses a subset of the schema to
+improve the efficiency for IS-IS LSP parsing operations.
 
 ## Note well
 

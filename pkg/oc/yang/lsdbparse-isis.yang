@@ -1,0 +1,24 @@
+module lsdbparse-isis {
+  prefix "lsdbparse";
+  namespace "http://openconfig.net/yang/lsdbparse/isis";
+
+  import openconfig-isis { prefix "oc-isis"; }
+
+  description
+    "This module defines an LSDB only ISIS module, such that lsdbparse
+    can use succinct definitions.";
+
+    container link-state-database {
+      config false;
+      description
+        "This container defines ISIS LSDB.";
+
+      list lsp {
+        key "lsp-id";
+        description
+          "This list describes LSPs in the LSDB.";
+        uses oc-isis:lsp-state;
+      }
+    }  
+
+}

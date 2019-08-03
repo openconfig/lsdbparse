@@ -77,7 +77,7 @@ func ip6BytesToString(ip []byte) (string, error) {
 // getTLV retrieves a TLV from an isisLSP, creating it if it does not exist. Returns
 // the TLV, a boolean indicating whether the TLV was created, or an error if one is
 // experienced.
-func (i *isisLSP) getTLV(t oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv, bool, error) {
+func (i *isisLSP) getTLV(t oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE) (*oc.Lsp_Tlv, bool, error) {
 	tlv, ok := i.LSP.Tlv[t]
 	var created bool
 	if !ok {
@@ -94,7 +94,7 @@ func (i *isisLSP) getTLV(t oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE) (*oc.Netw
 // does not exist within the LSP, it is created. The container within
 // the TLV corresponding to the element containerName is initialised
 // in the returned TLV.
-func (i *isisLSP) getTLVAndInit(t oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE, containerName string) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv, error) {
+func (i *isisLSP) getTLVAndInit(t oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE, containerName string) (*oc.Lsp_Tlv, error) {
 	tlv, created, err := i.getTLV(t)
 	if err != nil {
 		return nil, err
@@ -112,8 +112,8 @@ func (i *isisLSP) getTLVAndInit(t oc.E_OpenconfigIsisLsdbTypes_ISIS_TLV_TYPE, co
 // getCapabilitySubTLV retrieves the specified sub-TLV from the
 // OpenConfig Router Capabilities TLV struct. If the sub-TLV does
 // not exist, it is created.
-func getCapabilitySubTLV(c *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability, t oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv, error) {
-	var stlv *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capability_Subtlv
+func getCapabilitySubTLV(c *oc.Lsp_Tlv_Capability, t oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE) (*oc.Lsp_Tlv_Capability_Subtlv, error) {
+	var stlv *oc.Lsp_Tlv_Capability_Subtlv
 	stlv, ok := c.Subtlv[t]
 	if !ok {
 		var err error
@@ -129,8 +129,8 @@ func getCapabilitySubTLV(c *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_Capab
 // OpenConfig Extended IS Reachability TLV neighbour struct. If the
 // sub-TLV does not exist, it is created, and the specified container
 // initialised within it.
-func getExtendedISReachSubTLV(n *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance, t oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE, c string) (*oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv, error) {
-	var stlv *oc.NetworkInstance_Protocol_Isis_Level_Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv
+func getExtendedISReachSubTLV(n *oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance, t oc.E_OpenconfigIsisLsdbTypes_ISIS_SUBTLV_TYPE, c string) (*oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv, error) {
+	var stlv *oc.Lsp_Tlv_ExtendedIsReachability_Neighbor_Instance_Subtlv
 	stlv, ok := n.Subtlv[t]
 	if !ok {
 		var err error
