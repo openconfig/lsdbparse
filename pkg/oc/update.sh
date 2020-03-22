@@ -25,7 +25,6 @@ runsed() {
 }
 
 git clone https://github.com/openconfig/public.git
-git clone https://github.com/mbrukman/autogen.git
 mkdir deps && cp ../../third_party/*.yang deps
 go run $GOPATH/src/github.com/openconfig/ygot/generator/generator.go -path=public,deps -output_file=oc.go \
   -package_name=oc -generate_fakeroot -fakeroot_name=lsdb -compress_paths=true \
@@ -34,5 +33,6 @@ go run $GOPATH/src/github.com/openconfig/ygot/generator/generator.go -path=publi
   -generate_append \
   yang/lsdbparse-isis.yang
 gofmt -w -s oc.go
+git clone -b v0.4 https://github.com/mbrukman/autogen.git
 autogen/autogen --no-code --no-tlc -c "Google LLC" -l apache -i oc.go
 rm -rf public autogen deps
