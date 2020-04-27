@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#!/bin/bash
-
 # Hack to ensure that if we are running on OS X with a homebrew installed
 # GNU sed then we can still run sed.
 runsed() {
