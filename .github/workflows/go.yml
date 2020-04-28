@@ -44,6 +44,3 @@ jobs:
     
     - name: Check gofmt
       run: diff -u <(echo -n) <(gofmt -d -s .)
-    
-    - name: Coverage
-      run: ./scripts/coverage.sh
