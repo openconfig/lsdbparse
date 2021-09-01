@@ -47,17 +47,6 @@ jobs:
       uses: shogo82148/actions-goveralls@v1
       with:
         path-to-profile: profile.cov
-        parallel: true
   
     - name: Check gofmt
       run: diff -u <(echo -n) <(gofmt -d -s .)
-    
-  finish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: shogo82148/actions-goveralls@v1
-        with:
-          parallel-finished: true
-    
-
