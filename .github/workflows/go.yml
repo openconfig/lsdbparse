@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: ['1.12', '1.13', '1.14']
+        go: ['1.15', '1.16', '1.17', '1.x']
     steps:
 
     - name: Set up Go ${{ matrix.go }}
