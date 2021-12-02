@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: ['1.12', '1.13', '1.14']
+        go: ['1.15', '1.16', '1.17', '1.x']
     steps:
 
     - name: Set up Go ${{ matrix.go }}
@@ -43,20 +43,10 @@ jobs:
       run: go test -race ./...
     
     - name: Send Coverage
+      if: ${{ matrix.go == '1.x' }}
       uses: shogo82148/actions-goveralls@v1
       with:
         path-to-profile: profile.cov
-        parallel: true
   
     - name: Check gofmt
       run: diff -u <(echo -n) <(gofmt -d -s .)
-    
-  finish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: shogo82148/actions-goveralls@v1
-        with:
-          parallel-finished: true
-    
-
