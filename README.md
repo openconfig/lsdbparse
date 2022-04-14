@@ -12,7 +12,7 @@ output it as gNMI Notifications containing OpenConfig encoded data.
 Two public APIs are provided:
 
 * `ISISBytesToLSP([]byte, int)`: takes an input byte array containing an IS-IS
-  PDU beginning at the LSP ID field, and returns a ygot GoStruct containing the
+  PDU beginning at the LSP ID field, and returns a ygot.ValidatedGoStruct containing the
   parsed LSP as per the OpenConfig schema, a bool indicating whether the LSP was
   succesfully parsed, and an error.
 
