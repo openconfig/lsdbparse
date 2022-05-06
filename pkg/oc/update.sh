@@ -26,7 +26,7 @@ runsed() {
 
 git clone https://github.com/openconfig/public.git
 mkdir deps && cp ../../third_party/*.yang deps
-go get github.com/openconfig/ygot/generator@latest
+go install github.com/openconfig/ygot/generator@latest
 generator -path=public,deps -output_file=oc.go \
   -package_name=oc -generate_fakeroot -fakeroot_name=lsdb -compress_paths=true \
   -exclude_modules=ietf-interfaces,openconfig-acl,openconfig-bgp,openconfig-interfaces,openconfig-local-routing,openconfig-routing-policy \
