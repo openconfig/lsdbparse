@@ -57,6 +57,25 @@ func newISISLSP() *isisLSP {
 	}
 }
 
+// ISISBytesToLSPIDSeqNum takes an input slice of bytes that contain an IS-IS
+// LSP starting at the LSP ID field.  If there are additional bytes prior to
+// this field, they can be discarded by specifying a non-zero offset.
+// It extracts only the LSP ID, LSP Sequence Number and Checksum or returns an
+// error if not enough bytes are present.
+func ISISBytesToLSPIDSeqNum(lspBytes []byte, offset int) (string, uint32, error) {
+	lspBytes = lspBytes[offset:]
+
+	if len(lspBytes) < 16 {
+		return "", 0, fmt.Errorf("invalid LSP data provided, need at least 16 bytes, got %d bytes", len(lspBytes))
+	}
+	lspid := fmt.Sprintf("%s-%s", canonicalHexString(lspBytes[0:7]), canonicalHexString([]byte{lspBytes[7]}))
+	seq, err := binaryToUint32(lspBytes[8:12])
+	if err != nil {
+		return "", 0, err
+	}
+	return lspid, seq, nil
+}
+
 // ISISBytesToLSP takes an input slice of bytes that contain an IS-IS LSP starting
 // at the LSP ID field. If there are additional bytes prior to this field, they can
 // be discarded by specifying a non-zero offset.
@@ -69,16 +88,12 @@ func newISISLSP() *isisLSP {
 // This function is specifically for Cisco IOS XR devices, since it handles the case
 // where a number of fields of the LSP are not included within the byte slice.
 func ISISBytesToLSP(lspBytes []byte, offset int) (*oc.Lsp, bool, error) {
-	lspBytes = lspBytes[offset:]
-
-	if len(lspBytes) < 16 {
-		return nil, false, fmt.Errorf("invalid LSP data provided, need at least 16 bytes, got %d bytes", len(lspBytes))
-	}
-
-	seq, err := binaryToUint32(lspBytes[8:12])
+	lspid, seq, err := ISISBytesToLSPIDSeqNum(lspBytes, offset)
 	if err != nil {
 		return nil, false, err
 	}
+
+	lspBytes = lspBytes[offset:]
 
 	checksum, err := binaryToUint32([]byte{0, 0, lspBytes[12], lspBytes[13]})
 	if err != nil {
@@ -91,8 +106,7 @@ func ISISBytesToLSP(lspBytes []byte, offset int) (*oc.Lsp, bool, error) {
 	}
 
 	i := newISISLSP()
-	i.LSP.LspId = ygot.String(fmt.Sprintf("%s-%s", canonicalHexString(lspBytes[0:7]), canonicalHexString([]byte{lspBytes[7]})))
-
+	i.LSP.LspId = ygot.String(lspid)
 	i.LSP.SequenceNumber = ygot.Uint32(seq)
 	i.LSP.Checksum = ygot.Uint16(uint16(checksum))
 	i.LSP.Flags = parseLSPFlags(lspBytes[14])
