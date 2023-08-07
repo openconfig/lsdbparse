@@ -120,7 +120,7 @@ func (i *isisLSP) processTLVs() error {
 	for _, r := range i.rawTLVs {
 		if f, ok := processTLVMap[r.Type]; ok {
 			pErr.Add(f(i, r))
-		} else { //lint:ignore SA9003: empty branch
+		} else { //lint:ignore SA9003 empty branch
 			// TODO(robjs): Append this TLV to the undefined TLVs in the
 			// OpenConfig data model.
 		}
@@ -464,7 +464,7 @@ func (i *isisLSP) processIPv6ReachabilityTLV(r *rawTLV) error {
 		ipL := int((pfxlen + 7) / 8)
 
 		if len(r.Value) < x+6+ipL {
-			//lint:ignore ST1005: error strings should not be capitalized
+			//lint:ignore ST1005 error strings should not be capitalized
 			return fmt.Errorf("Invalid prefix length, %d, overflows length of TLV %d", ipL, len(r.Value))
 		}
 
@@ -980,7 +980,7 @@ func parseUnreservedBandwidthSubTLV(r *rawTLV) (map[uint8][]byte, error) {
 // which is the local link ID, and the second of which is the
 // remote; or an error if one is encountered.
 //
-//lint:ignore U1000: unused function
+//lint:ignore U1000 unused function
 func parseLocalRemoteLinkIDSubTLV(r *rawTLV) (uint32, uint32, error) {
 	if len(r.Value) != 8 {
 		return 0, 0, fmt.Errorf("incorrect length for local/remote link ID TLV: %d != 8", len(r.Value))
