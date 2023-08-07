@@ -120,7 +120,8 @@ func (i *isisLSP) processTLVs() error {
 	for _, r := range i.rawTLVs {
 		if f, ok := processTLVMap[r.Type]; ok {
 			pErr.Add(f(i, r))
-		} else { //lint:ignore SA9003 empty branch
+			//lint:ignore SA9003 empty branch
+		} else {
 			// TODO(robjs): Append this TLV to the undefined TLVs in the
 			// OpenConfig data model.
 		}
