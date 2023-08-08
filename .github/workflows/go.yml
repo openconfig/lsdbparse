@@ -8,6 +8,6 @@ on:
 
 jobs:
   common:
-    uses: openconfig/common-ci/.github/workflows/basic_go.yml@b4fbb982dc3d88039d015645d261f70402898a6b
+    uses: openconfig/common-ci/.github/workflows/basic_go.yml@97d0e02bb9b9449f8a4df5ce3997840216ff9f5f
     with:
       skip-govet: true
